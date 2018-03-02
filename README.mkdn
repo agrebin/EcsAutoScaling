@@ -76,6 +76,7 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 ```
 
 
+LICENSE
 -------
 This is based on Daniel Roades work: see (https://github.com/daniel-rhoades) 
 This package is distributed under MIT License.

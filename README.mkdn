@@ -67,6 +67,10 @@ Installation
 The container is pushed to Docker Hub as **adriangrebin/prototype**, the source, Dockerfile
 And build script are under **/Container** dir.
 
+Under some circumstances that i was unable to reproduce since i have no other AWS account.
+i needed to run through the ECS Getting Started, on step 2 choose the ELB option, then just keep clicking next;
+This is needed just to create the initial ECS roles;
+
 You will need to export your AWS keys as follows:
 
 ```

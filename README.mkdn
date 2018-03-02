@@ -33,12 +33,13 @@ This demo will:
  
 
 
-Compatibity and Requirements
-----------------------------
+Compatibity
+-----------
 
 It has been tested using python 2.7, and Ansible 4.4.3 (previous verions are known to have prolbems with some aws modules)
 
-**Requirements**
+Requirements
+------------
 - A working AWS account, it's access keys and ssh keys.
 - Python and Ansible
 - boto, boto3 and awscli
@@ -57,10 +58,22 @@ Installation
 ----------
 
 You will need to export your AWS keys as follows:
+
+```
 export AWS_ACCESS_KEY="your access key"
 export AWS_SECRETE_KEY="your secretet key"
 export AWS_REGION="the region you intend to deploy to" # Make a note that not all regions support ECS
+```
 
+Then you will run the shellscript **deploy-cluster.sh** and pass following parameters:
+- Domain name for route53
+- Name of SSH credentials to link to the EC2 instances
+
+
+**Example**
+````
+./deploy-cluster.sh domain.local MySShKey
+```
 
 
 -------

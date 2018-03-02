@@ -71,7 +71,7 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 
 
 **Example**
-````
+```
 ./deploy-cluster.sh domain.local MySShKey
 ```
 

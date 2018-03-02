@@ -37,14 +37,21 @@ Compatibity and Requirements
 ----------------------------
 
 It has been tested using python 2.7, and Ansible 4.4.3 (previous verions are known to have prolbems with some aws modules)
-You need to have a working AWS account, it's access keys and ssh keys.
-You will need to have compatible Python and Ansible installed, and also boto, boto3 and awscli
+
+**Requirements**
+- A working AWS account, it's access keys and ssh keys.
+- Python and Ansible
+- boto, boto3 and awscli
+
+```
+pip install ansible==4.4.3
 pip install boto boto3 awscli
 
-After that please configure aws using
 aws configure
+````
 
-And enter your aws credentials and zone
+Please enter also your credentials and zone on **aws configure** step.
+
 
 Installation
 ----------
@@ -54,7 +61,6 @@ export AWS_ACCESS_KEY="your access key"
 export AWS_SECRETE_KEY="your secretet key"
 export AWS_REGION="the region you intend to deploy to" # Make a note that not all regions support ECS
 
-Once you are ready, you just need to
 
 
 -------

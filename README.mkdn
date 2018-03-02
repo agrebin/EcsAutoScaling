@@ -50,8 +50,7 @@ Requirements
 - boto, boto3 and awscli
 
 ```
-pip install ansible==4.4.3
-pip install boto boto3 awscli
+pip install -r requirements.txt
 
 aws configure
 ````

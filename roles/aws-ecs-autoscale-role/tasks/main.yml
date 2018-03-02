@@ -49,8 +49,74 @@
       tags: "{{ ec2_asg_tags }}"
       wait_for_instances: "{{ ec2_asg_wait }}"
     register: ec2_asg
-
   - debug: var=ec2_asg verbosity=4
+
+  - name: Configure Scaling Policies
+    ec2_scaling_policy:
+      region: "{{ vpc_region }}"
+      name: "{{ item.name }}"
+      asg_name: "{{ ec2_asg_name }}"
+      state: present
+      adjustment_type: "{{ item.adjustment_type }}"
+      min_adjustment_step: "{{ item.min_adjustment_step }}"
+      scaling_adjustment: "{{ item.scaling_adjustment }}"
+      cooldown: "{{ item.cooldown }}"
+    with_items:
+      - name: "Increase Group Size"
+        adjustment_type: "ChangeInCapacity"
+        scaling_adjustment: +1
+        min_adjustment_step: 1
+        cooldown: 180
+      - name: "Decrease Group Size"
+        adjustment_type: "ChangeInCapacity"
+        scaling_adjustment: -1
+        min_adjustment_step: 1
+        cooldown: 300
+    register: sp_result
+
+  - name: Determine Metric Alarm configuration
+    set_fact:
+      metric_alarms:
+       - name: "{{ ec2_asg_name }}-ScaleUp"
+         comparison: ">="
+         threshold: 50.0
+         alarm_actions:
+            - "{{ sp_result.results[0].arn }}"
+       - name: "{{ ec2_asg_name }}-ScaleDown"
+         comparison: "<="
+         threshold: 20.0
+         alarm_actions:
+            - "{{ sp_result.results[1].arn }}"
+
+  - name: Configure Metric Alarms and link to Scaling Policies
+    ec2_metric_alarm:
+      region: "{{ vpc_region }}"
+      name: "{{ item.name }}"
+      state: present
+      metric: "CPUUtilization"
+      namespace: "AWS/EC2"
+      statistic: "Average"
+      comparison: "{{ item.comparison }}"
+      threshold: "{{ item.threshold }}"
+      period: 60
+      evaluation_periods: 5
+      unit: "Percent"
+      dimensions:
+        AutoScalingGroupName: "{{ ec2_asg_name }}"
+      alarm_actions: "{{ item.alarm_actions }}"
+    with_items:
+     - name: "{{ ec2_asg_name }}-ScaleUp"
+       comparison: ">="
+       threshold: 50.0
+       alarm_actions:
+          - "{{ sp_result.results[0].arn }}"
+     - name: "{{ ec2_asg_name }}-ScaleDown"
+       comparison: "<="
+       threshold: 20.0
+       alarm_actions:
+          - "{{ sp_result.results[1].arn }}"
+
+    register: ma_result
 
   when: ecs_state == "present"
 

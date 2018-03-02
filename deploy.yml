@@ -109,7 +109,8 @@
             "{{ vpc.subnets[1].id }}"
             ],
           vpc_name: "{{ my_vpc_name }}",
-          key_name: "{{ my_ec2_key_name }}"
+          key_name: "{{ my_ec2_key_name }}",
+          vpc_region: "{{ my_vpc_region }}"
         }
 
        # Provision an ELB and register it with an alias in Route 53

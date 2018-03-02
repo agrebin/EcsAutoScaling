@@ -107,6 +107,12 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
       ssh_key_name: "SSHKEYNAME"
 ```
 
+Access to the application
+------------------------
+
+Once everything is deployed you will need to get the Load Balancer Address
+Go to EC2, Load Balancer  and on Description Tab, you will have 'DNS name'
+You can access the application just by pointing your browser to that FQDN
 
 
 LICENSE

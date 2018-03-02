@@ -5,10 +5,12 @@ Deploy Demo App on AMAZON ECS
 Description
 -----------
 
-This is an example of how to build an autoscaling infrastructure on AWS from scatch using ansible, and is intended to be used as a 
+This is an example of how to build an autoscaling infrastructure on AWS from scratch using ansible, and is intended to be used as a
 Demo on how to quickly create infrastructure as code on the cloud.
-It uses Amazon ECS (Elasti Container Service) which is an implementation of Kubernetes.
+It uses Amazon ECS (Elastic Container Service) which is an implementation of Kubernetes.
 I am including a simple python application which serves a minimal http server and it's Dockerfile.
+
+
 
 This demo will:
 
@@ -30,13 +32,13 @@ This demo will:
 - Create an ECS cluster
   - Create an ECS task definition for running our Container
   - Create a Service to access our containers
- 
+
 
 
 Compatibity
 -----------
 
-It has been tested using python 2.7, and Ansible 4.4.3 (previous verions are known to have prolbems with some aws modules)
+It has been tested using python 2.7, and Ansible 4.4.3 (previous versions are known to have problems with some AWS modules)
 
 Requirements
 ------------
@@ -53,7 +55,7 @@ aws configure
 
 Please enter also your credentials and zone on **aws configure** step.
 
-** Create an IAM role for givin acess ECS to the compute instances
+** Create an IAM role for giving access ECS to the compute instances
 You will need to create ecsInstance Role from AWS IAM Console
 * Create Rolename: ecsInstanceRole
 * Apply the following AWS policy to the role: AmazonEC2ContainerServiceforEC2Role.
@@ -62,11 +64,14 @@ You will need to create ecsInstance Role from AWS IAM Console
 Installation
 ----------
 
+The container is pushed to Docker Hub as **adriangrebin/prototype**, the source, Dockerfile
+And build script are under /Container dir.
+
 You will need to export your AWS keys as follows:
 
 ```
 export AWS_ACCESS_KEY="your access key"
-export AWS_SECRETE_KEY="your secretet key"
+export AWS_SECRETE_KEY="your secret key"
 export AWS_REGION="the region you intend to deploy to" # Make a note that not all regions support ECS
 ```
 
@@ -83,7 +88,7 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 **Edit deploy.yml and make some customizations***
 **MANDATORY
 - Edit my_vpc_region and set yours
-- Edit ssh_key_name and put yours 
+- Edit ssh_key_name and put yours
 
 **Example
 ```
@@ -99,6 +104,5 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 
 LICENSE
 -------
-This is based on Daniel Roades work: see (https://github.com/daniel-rhoades) 
+This is based on Daniel Roades work: see (https://github.com/daniel-rhoades)
 This package is distributed under MIT License.
-

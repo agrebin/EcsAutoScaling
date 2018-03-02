@@ -19,4 +19,4 @@ prototype_elb_health_check:
   healthy_threshold: 10
 
 # Region in which to create the ELBs
-prototype_elb_region: "{{ region }}"
+prototype_elb_region: "{{ vpc_region }}"

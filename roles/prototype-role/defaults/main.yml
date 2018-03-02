@@ -8,8 +8,8 @@ prototype_container_name: "prototype-server"
 prototype_image: "adriangrebin/prototype"
 
 # CPU/Memory allocation for REST endpoint
-prototypeservice_cpu: 300
-prototypeservice_memory: 300
+prototypeservice_cpu: 100
+prototypeservice_memory: 400
 
 # Port on which the container will run
 prototypeservice_host_port: 80

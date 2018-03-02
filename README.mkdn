@@ -18,7 +18,7 @@ This demo will:
 - Create a new VPC
   - Create Subnets on two different availability zones of the region
   - Create Security groups:
-   - Allow ssh only from a bastion host (you wil need to launch it yourself)
+   - Allow ssh only from a bastion host (you will need to launch it yourself)
    - Allow web access from the internet (for LB and EC2 instances)
 
 
@@ -26,7 +26,9 @@ This demo will:
 - Create an AutoScaling Group, a Launch Configuration and an AutoScaling policy for use by ECS
 
 **Load Balancing**
-- Create and link an ELB serrvice for Load Balancing on the Cluster
+- Create and link an ELB service for Load Balancing on the Cluster.
+  The scaling strategy will increase by 1 instance if network In is  is >= 10 bytes for 1'
+  And reduce it by 1 if NetworkIn is <= 5 for 1'
 
 **DNS**
 - Create a Route 53 zone and register the ELB on it

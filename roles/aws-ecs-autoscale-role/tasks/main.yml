@@ -31,6 +31,7 @@
   - debug: var=ec2_lc verbosity=4
   - debug: var=ec2_asg_vpc_subnets
 
+
   # Container Instances: Define an Auto Scaling Group to manage creating/terminating EC2 instances
   - name: "AWS | EC2 | Define a EC2 Auto Scaling Group for ECS use"
     ec2_asg:
@@ -93,13 +94,14 @@
       region: "{{ vpc_region }}"
       name: "{{ item.name }}"
       state: present
-      metric: "CPUUtilization"
+      #metric: "CPUUtilization"
+      metric: "NetworkIn"
       namespace: "AWS/EC2"
       statistic: "Average"
       comparison: "{{ item.comparison }}"
       threshold: "{{ item.threshold }}"
       period: 60
-      evaluation_periods: 5
+      evaluation_periods: 1
       unit: "Percent"
       dimensions:
         AutoScalingGroupName: "{{ ec2_asg_name }}"
@@ -107,12 +109,12 @@
     with_items:
      - name: "{{ ec2_asg_name }}-ScaleUp"
        comparison: ">="
-       threshold: 50.0
+       threshold: 10
        alarm_actions:
           - "{{ sp_result.results[0].arn }}"
      - name: "{{ ec2_asg_name }}-ScaleDown"
        comparison: "<="
-       threshold: 20.0
+       threshold: 5
        alarm_actions:
           - "{{ sp_result.results[1].arn }}"
 

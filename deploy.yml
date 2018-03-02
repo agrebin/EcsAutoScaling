@@ -6,16 +6,16 @@
   vars:
       my_vpc_name: "PrototypingExceriseCluster"
       my_vpc_region: "us-east-2"
-      my_vpc_cidr: "172.56.0.0/16"
+      my_vpc_cidr: "172.58.0.0/16"
       everywhere_cidr: "0.0.0.0/0"
       ssh_key_name: "{{ my_ssh_key }}"
 
       # Subnets within the VPC
       my_vpc_subnets:
-        - cidr: "172.56.10.0/24"
+        - cidr: "172.58.10.0/24"
           az: "{{ my_vpc_region }}a"
 
-        - cidr: "172.56.20.0/24"
+        - cidr: "172.58.20.0/24"
           az: "{{ my_vpc_region }}b"
 
       # Allow the subnets to route to the outside world

@@ -80,6 +80,22 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 ./deploy-cluster.sh domain.local MySShKey
 ```
 
+**Edit deploy.yml and make some customizations***
+**MANDATORY
+- Edit my_vpc_region and set yours
+- Edit ssh_key_name and put yours 
+
+*Example
+```
+  vars:
+      my_vpc_name: "PrototypingExceriseCluster"
+      my_vpc_region: "us-east-2"
+      my_vpc_cidr: "172.56.0.0/16"
+      everywhere_cidr: "0.0.0.0/0"
+      ssh_key_name: "SSHKEYNAME"
+```
+
+
 
 LICENSE
 -------

@@ -8,7 +8,7 @@
       my_vpc_region: "us-east-2"
       my_vpc_cidr: "172.56.0.0/16"
       everywhere_cidr: "0.0.0.0/0"
-      ssh_key_name: "Adrian"
+      ssh_key_name: "{{ my_ssh_key }}"
 
       # Subnets within the VPC
       my_vpc_subnets:

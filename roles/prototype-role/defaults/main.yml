@@ -1,0 +1,26 @@
+# IAM role to use for ECS operations
+ecs_iam_role: "ecsServiceRole"
+
+# Name of the Greeter container
+prototype_container_name: "prototype-server"
+
+# Docker image containing the Server
+prototype_image: "adriangrebin/prototype"
+
+# CPU/Memory allocation for REST endpoint
+prototypeservice_cpu: 300
+prototypeservice_memory: 300
+
+# Port on which the Greeter will run
+prototypeservice_host_port: 80
+
+# Name to give to the ECS Service
+ecs_service_name: "{{ ecs_cluster_name }}"
+
+# Name to give to the ECS Task Definition family
+ecs_task_definition_family: "{{ ecs_service_name }}"
+
+# Default component states
+ecs_task_definition_state: "present"
+ecs_service_state: "present"
+ecs_cluster_state: "present"

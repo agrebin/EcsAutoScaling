@@ -1,0 +1,11 @@
+---
+# Name of the ECS cluster
+prototype_ecs_cluster_name: "{{ application_name }}-{{ env }}"
+
+# Name of the ECS Task Definition
+prototype_ecs_task_definition_family: "{{ my_ecs_cluster_name }}-endpoint"
+
+# Name, version and number of initial tasks of the ECS Service
+prototype_ecs_service_name: "{{ prototype_ecs_task_definition_family }}-service"
+prototype_ecs_service_version: 1
+prototype_ecs_task_definition_count: 2

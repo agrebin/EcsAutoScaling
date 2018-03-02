@@ -5,10 +5,18 @@ Deploy Demo App on AMAZON ECS
 Description
 -----------
 
-This is an example of how to build an autoscaling infrastructure on AWS from scatch using ansible.
-This is intended to be used as a Demo on how to quickly create infrastructure as code on the cloud.
-It uses Amazon ECS (Elasti Container Service) which is an implementation of Kubernets.
+This is an example of how to build an autoscaling infrastructure on AWS from scatch using ansible, and is intended to be used as a 
+Demo on how to quickly create infrastructure as code on the cloud.
+It uses Amazon ECS (Elasti Container Service) which is an implementation of Kubernetes.
 I am including a simple python application which serves a minimal http server and it's Dockerfile.
+
+This demo will:
+
+- Create a new VPC
+  - Create Subnets on two different availability zones of the region
+  - Create Security groups to allow ssh from a bastion host, allow web access from the internet and only from internal subnets.
+  - Create a 
+
 
 Compatibity and Requirements
 ----------------------------

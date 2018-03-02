@@ -1,0 +1,40 @@
+Deploy Demo App on AMAZON ECS
+=============================
+
+
+Description
+-----------
+
+This is an example of how to build an autoscaling infrastructure on AWS from scatch using ansible.
+This is intended to be used as a Demo on how to quickly create infrastructure as code on the cloud.
+It uses Amazon ECS (Elasti Container Service) which is an implementation of Kubernets.
+I am including a simple python application which serves a minimal http server and it's Dockerfile.
+
+Compatibity and Requirements
+----------------------------
+
+It has been tested using python 2.7, and Ansible 4.4.3 (previous verions are known to have prolbems with some aws modules)
+You need to have a working AWS account, it's access keys and ssh keys.
+You will need to have compatible Python and Ansible installed, and also boto, boto3 and awscli
+pip install boto boto3 awscli
+
+After that please configure aws using
+aws configure
+
+And enter your aws credentials and zone
+
+Installation
+----------
+
+You will need to export your AWS keys as follows:
+export AWS_ACCESS_KEY="your access key"
+export AWS_SECRETE_KEY="your secretet key"
+export AWS_REGION="the region you intend to deploy to" # Make a note that not all regions support ECS
+
+Once you are ready, you just need to
+
+
+-------
+This is based on Daniel Roades work: see (https://github.com/daniel-rhoades) 
+This package is distributed under MIT License.
+

@@ -5,7 +5,7 @@
 - block:
 
   # ECS Task Definition which holds the logical combination of Nginx as a reverse proxy to the Greeter service
-  - name: "Greeter on Nginx/Akka HTTP | Describe the application as an ECS Task Definition"
+  - name: "Prototype deploy | Describe the application as an ECS Task Definition"
     ecs_taskdefinition:
       state: "{{ ecs_task_definition_state }}"
       family: "{{ ecs_task_definition_family }}"
@@ -32,7 +32,7 @@
   - debug: var=ecs_taskdefinition_output verbosity=4
 
   # ECS Service which runs the Task Definition on the ECS cluster
-  - name: "Greeter on Nginx/Akka HTTP | Provision an ECS Service using the previous ECS Task Definition"
+  - name: "Prototype deploy | Provision an ECS Service using the previous ECS Task Definition"
     ecs_service:
       state: "{{ ecs_service_state }}"
       name: "{{ ecs_service_name }}"
@@ -51,7 +51,7 @@
   when: ecs_service_state == "present"
 
 - block:
-  - name: "Greeter on Nginx/Akka HTTP | Get ECS service facts"
+  - name: "Get ECS service facts"
     ecs_service_facts:
       cluster: "{{ ecs_cluster_name }}"
       service: "{{ ecs_service_name }}"
@@ -65,7 +65,7 @@
 # Decommissioning block
 - block:
   # Update the ECS Service to set desired count to zero
-  - name: "Greeter on Nginx/Akka HTTP | Scale down the ECS Service to zero"
+  - name: "Prototype deploy | Scale down the ECS Service to zero"
     ecs_service:
       state: "present"
       name: "{{ ecs_service_name }}"
@@ -74,7 +74,7 @@
       desired_count: 0
 
   # Decommission the ECS Service
-  - name: "Greeter on Nginx/Akka HTTP | Decommission the ECS Service"
+  - name: "Prototype Deploy | Decommission the ECS Service"
     ecs_service:
       state: "absent"
       name: "{{ ecs_service_name }}"

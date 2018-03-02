@@ -1,7 +1,7 @@
 # IAM role to use for ECS operations
 ecs_iam_role: "ecsServiceRole"
 
-# Name of the Greeter container
+# Name of the container
 prototype_container_name: "prototype-server"
 
 # Docker image containing the Server
@@ -11,7 +11,7 @@ prototype_image: "adriangrebin/prototype"
 prototypeservice_cpu: 300
 prototypeservice_memory: 300
 
-# Port on which the Greeter will run
+# Port on which the container will run
 prototypeservice_host_port: 80
 
 # Name to give to the ECS Service

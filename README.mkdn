@@ -90,7 +90,7 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 - Edit my_vpc_region and set yours
 - Edit ssh_key_name and put yours
 
-**Example
+**Example**
 ```
   vars:
       my_vpc_name: "PrototypingExceriseCluster"

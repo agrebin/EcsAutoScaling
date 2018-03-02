@@ -12,21 +12,21 @@ I am including a simple python application which serves a minimal http server an
 
 This demo will:
 
-[Basic Infra]
+**Basic Infra**
 - Create a new VPC
   - Create Subnets on two different availability zones of the region
   - Create Security groups to allow ssh from a bastion host, allow web access from the internet and only from internal subnets.
 
-[Auto Scaling]
+**Auto Scaling**
 - Create an AutoScaling Group, a Launch Configuration and an AutoScaling policy for use by ECS
 
-[Load Balancing]
+**Load Balancing**
 - Create and link an ELB serrvice for Load Balancing on the Cluster
 
-[DNS]
+**DNS**
 - Create a Route 53 zone and register the ELB on it
 
-[Container Scheduler service]
+**Container Scheduler service**
 - Create an ECS cluster
   - Create an ECS task definition for running our Container
   - Create a Service to access our containers

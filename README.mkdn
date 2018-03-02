@@ -58,8 +58,6 @@ You will need to create ecsInstance Role from AWS IAM Console
 * Create Rolename: ecsInstanceRole
 * Apply the following AWS policy to the role: AmazonEC2ContainerServiceforEC2Role.
 
-I
-
 
 Installation
 ----------

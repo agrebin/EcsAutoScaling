@@ -7,7 +7,7 @@ ec2_group_internal_inbound_sg:
         to_port: 80
         group_id: "{{ IN_ec2_group_inbound_sg.results[0].group_id }}"
 
-ADRIAN:
+ec2_inbound_web:
      group_id: "{{ IN_ec2_group_inbound_sg.results[0].group_id }}"
 
 ec2_group_internal_outbound_sg:

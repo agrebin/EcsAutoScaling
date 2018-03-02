@@ -97,7 +97,7 @@
           ecs_cluster_name: "{{ my_ecs_cluster_name }}",
           ec2_security_groups: [
             #"{{ ec2_group_internal_inbound_sg.results[0].group_id }}",
-            "{{ ADRIAN.group_id }}",
+            "{{ ec2_inbound_web.group_id }}",
             "{{ ec2_group_internal_outbound_sg.group_id }}"
             ],
           ec2_asg_availability_zones: [
@@ -120,7 +120,7 @@
         elb_listeners: "{{ prototype_elb_listeners }}",
         elb_security_groups: [
           #"{{ ec2_group_internal_inbound_sg.results[0].group_id }}"
-          "{{ ADRIAN.group_id }}"
+          "{{ ec2_inbound_web.group_id }}"
           ],
         elb_region: "{{ my_vpc_region }}",
         elb_subnets: [

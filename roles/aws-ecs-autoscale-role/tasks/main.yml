@@ -11,11 +11,6 @@
     register: ecs_cluster
 
   - debug: var=ecs_cluster verbosity=4
-  - debug: var=ecs_state
-  - debug: var=ec2_ami_id
-  - debug: var="{{ ec2_security_groups }}"
-  - debug:  msg="MOCO {{ item }}"
-    with_list: ec2_security_groups 
 
   # Container Instances: Define a EC2 Launch Configuration to create EC2 instances that run the ECS agent, then ensure
   # they are registered into the ECS cluster

@@ -19,8 +19,6 @@
 # Dynamically include internal inbound security groups file
 - include_vars: "{{ ec2_group_internal_inbound_sg_file }}"
 
-- debug: msg="MOCASO {{ ADRIAN.group_id }} " 
-
 # Commission internal inbound security groups
 - name: "AWS | Provision networking | Create Internal Inbound Security Groups"
   local_action:

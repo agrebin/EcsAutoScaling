@@ -26,6 +26,7 @@
               hardLimit: 65536
           portMappings:
             - containerPort: 80
+              hostPort: 80
     register: ecs_taskdefinition_output
 
   - debug: var=ecs_taskdefinition_output verbosity=4
@@ -39,10 +40,10 @@
       task_definition: "{{ ecs_task_definition_family }}:{{ ecs_taskdefinition_output.taskdefinition.revision }}"
       desired_count: "{{ ecs_task_definition_count }}"
   #    role: "{{ ecs_iam_role }}"
-  #    load_balancers:
-  #      - loadBalancerName: "{{ elb_name }}"
-  #        containerName: "{{ prototype_container_name }}"
-  #        containerPort: 80
+      load_balancers:
+        - loadBalancerName: "{{ elb_name }}"
+          containerName: "{{ prototype_container_name }}"
+          containerPort: 80
     register: ecs_service_output
 
   - debug: var=ecs_service_output verbosity=4

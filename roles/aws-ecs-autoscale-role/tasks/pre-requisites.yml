@@ -6,6 +6,8 @@
   fail: msg="You must specify the name of the SSH key you want to assign to the EC2 instances, e.g. my-ssh-key"
   when: key_name is undefined
 
+#- debug: var=ec2_security_groups
+
 - name: "AWS | ECS | Check EC2 security groups have been defined"
   fail: msg="You must specify a list of existing EC2 security groups IDs to apply to the auto-scaling EC2 instances"
   when: ec2_security_groups is undefined and ecs_state == "present"

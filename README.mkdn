@@ -86,7 +86,7 @@ Then you will run the shellscript **deploy-cluster.sh** and pass following param
 ```
 
 **Edit deploy.yml and make some customizations***
-**MANDATORY
+**MANDATORY**
 - Edit my_vpc_region and set yours
 - Edit ssh_key_name and put yours
 

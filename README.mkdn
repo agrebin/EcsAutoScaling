@@ -40,7 +40,7 @@ This demo will:
 
 
 
-Compatibity
+Compatibility
 -----------
 
 It has been tested using python 2.7, and Ansible 4.4.3 (previous versions are known to have problems with some AWS modules)

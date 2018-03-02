@@ -17,7 +17,10 @@ This demo will:
 **Basic Infra**
 - Create a new VPC
   - Create Subnets on two different availability zones of the region
-  - Create Security groups to allow ssh from a bastion host, allow web access from the internet and only from internal subnets.
+  - Create Security groups:
+   - Allow ssh only from a bastion host (you wil need to launch it yourself)
+   - Allow web access from the internet (for LB and EC2 instances)
+
 
 **Auto Scaling**
 - Create an AutoScaling Group, a Launch Configuration and an AutoScaling policy for use by ECS

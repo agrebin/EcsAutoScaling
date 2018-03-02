@@ -53,6 +53,13 @@ aws configure
 
 Please enter also your credentials and zone on **aws configure** step.
 
+** Create an IAM role for givin acess ECS to the compute instances
+You will need to create ecsInstance Role from AWS IAM Console
+* Create Rolename: ecsInstanceRole
+* Apply the following AWS policy to the role: AmazonEC2ContainerServiceforEC2Role.
+
+I
+
 
 Installation
 ----------

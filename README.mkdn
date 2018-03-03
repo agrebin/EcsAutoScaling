@@ -18,7 +18,7 @@ This demo will:
 - Create a new VPC
   - Create Subnets on two different availability zones of the region
   - Create Security groups:
-   - Allow ssh only from a bastion host (you will need to launch it yourself)
+   - Allow ssh to the EC2 instances
    - Allow web access from the internet and to port 9090 (for LB and EC2 instances)
 
 

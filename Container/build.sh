@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Building Docker Image"
-docker build . -t agrebin/prototype
+docker build . -t adriangrebin/prototype
 
 echo "Pushing Docker Image"
-docker push agrebin/prototype
+docker push adriangrebin/prototype

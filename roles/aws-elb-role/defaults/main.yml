@@ -12,12 +12,12 @@ elb_listeners:
  - protocol: "http"
    load_balancer_port: 80
    instance_protocol: "http"
-   instance_port: 80
+   instance_port: 9090
 
 # Health check to run to determine instance health
 elb_health_check:
   ping_protocol: "tcp"
-  ping_port: 80
+  ping_port: 9090
   response_timeout: 10
   interval: 30
   unhealthy_threshold: 2

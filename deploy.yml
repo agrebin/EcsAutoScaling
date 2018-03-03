@@ -2,20 +2,20 @@
 - hosts: localhost
   connection: local
   gather_facts: no
-  
+
   vars:
       my_vpc_name: "PrototypingExceriseCluster"
       my_vpc_region: "us-east-2"
-      my_vpc_cidr: "172.58.0.0/16"
+      my_vpc_cidr: "172.78.0.0/16"
       everywhere_cidr: "0.0.0.0/0"
       ssh_key_name: "{{ my_ssh_key }}"
 
       # Subnets within the VPC
       my_vpc_subnets:
-        - cidr: "172.58.10.0/24"
+        - cidr: "172.78.10.0/24"
           az: "{{ my_vpc_region }}a"
 
-        - cidr: "172.58.20.0/24"
+        - cidr: "172.78.20.0/24"
           az: "{{ my_vpc_region }}b"
 
       # Allow the subnets to route to the outside world
@@ -34,8 +34,11 @@
           sg_rules:
             - proto: tcp
               from_port: 80
-              to_port: 80
+              to_port: 9090
               cidr_ip: "{{ everywhere_cidr }}"
+            - proto: tcp
+              from_port: 80
+              to_port: 80
 
         # Only allow SSH access from within the VPC, to access any services within the VPC you would need to create a
         # temporary bastion host
@@ -45,7 +48,7 @@
            - proto: tcp
              from_port: 22
              to_port: 22
-             cidr_ip: "{{ my_vpc_cidr }}"
+             cidr_ip: "{{ everywhere_cidr }}"
 
       # Internal inbound security groups, e.g. services which should not be directly accessed outside the VPC, such as
       # the web servers behind the load balancer.
@@ -96,8 +99,8 @@
           role: aws-ecs-autoscale-role,
           ecs_cluster_name: "{{ my_ecs_cluster_name }}",
           ec2_security_groups: [
-            #"{{ ec2_group_internal_inbound_sg.results[0].group_id }}",
             "{{ ec2_inbound_web.group_id }}",
+            "{{ ec2_inbound_ssh.group_id }}",
             "{{ ec2_group_internal_outbound_sg.group_id }}"
             ],
           ec2_asg_availability_zones: [
@@ -132,7 +135,7 @@
         route53_zone: "{{ my_route53_zone }}",
         route53_host: "{{ application_name }}-{{ env }}.{{ my_route53_zone }}"
        }
-   
+
        # Configure the Greeter service to run on ECS
        - {
             role: prototype-role,

@@ -8,11 +8,11 @@ prototype_container_name: "prototype-server"
 prototype_image: "adriangrebin/prototype"
 
 # CPU/Memory allocation for REST endpoint
-prototypeservice_cpu: 100
+prototypeservice_cpu: 1024
 prototypeservice_memory: 400
 
 # Port on which the container will run
-prototypeservice_host_port: 80
+prototypeservice_host_port: 9090
 
 # Name to give to the ECS Service
 ecs_service_name: "{{ ecs_cluster_name }}"

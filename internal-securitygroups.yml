@@ -10,5 +10,8 @@ ec2_group_internal_inbound_sg:
 ec2_inbound_web:
      group_id: "{{ IN_ec2_group_inbound_sg.results[0].group_id }}"
 
+ec2_inbound_ssh:
+     group_id: "{{ IN_ec2_group_inbound_sg.results[1].group_id }}"
+
 ec2_group_internal_outbound_sg:
     group_id: "{{ IN_ec2_group_outbound_sg.results[0].group_id }}"

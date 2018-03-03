@@ -12,7 +12,7 @@ inbound_security_groups:
     sg_rules:
       - proto: tcp
         from_port: 80
-        to_port: 80
+        to_port: 9090
         cidr_ip: "{{ everywhere_cidr }}"
 
       - proto: tcp

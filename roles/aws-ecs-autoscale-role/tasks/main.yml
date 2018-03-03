@@ -30,6 +30,7 @@
 
   - debug: var=ec2_lc verbosity=4
   - debug: var=ec2_asg_vpc_subnets
+  - debug: var=ec2_security_groups
 
 
   # Container Instances: Define an Auto Scaling Group to manage creating/terminating EC2 instances
@@ -97,7 +98,7 @@
       #metric: "CPUUtilization"
       metric: "NetworkIn"
       namespace: "AWS/EC2"
-      statistic: "Average"
+      statistic: "Sum"
       comparison: "{{ item.comparison }}"
       threshold: "{{ item.threshold }}"
       period: 60
